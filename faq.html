@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bliss Stays</title>
+  <style>
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #444;
+      line-height: 1.6;
+      background-color: #f4f0e6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f0e6;
+      width: 100%;
+      min-height: 100%;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Colors */
+    :root {
+      --primary: #4b4b38;
+      --accent: #6b6b50;
+      --light: #f8f5ee;
+    }
+
+    /* Hero with video */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      z-index: 1;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .hero-logo img {
+      max-width: 300px;
+      width: 90%;
+      height: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+
+
+    
+
+    .logo-block {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logo-text {
+  letter-spacing: 0.5px;
+}
+
+.home-message-wrapper {
+  background-color: #f4f0e0; /* Makes the entire width same color */
+  width: 100%;
+}
+
+.home-message {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-message-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 320px;
+}
+
+.home-message-left {
+  flex: 1 1 300px;
+  font-size: 2.0rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--primary);
+}
+
+.home-message-right {
+  flex: 1 1 500px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .home-message-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-message-left {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .home-message-right {
+    font-size: 1rem;
+  }
+}
+
+/* Outer full-width background wrapper */
+.bliss-brands-fullwrap {
+  background-color: #f4f0e6;
+  width: 100%;
+}
+
+/* Section inside wrapper */
+.bliss-brands-showcase {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Content wrapper */
+.brands-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brands-left {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.brands-left h5 {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.brands-left h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.brands-left p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Cards container */
+.brands-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.brand-card {
+  background: #ece8dd;
+  text-align: center;
+  flex: 1 1 250px;
+  max-width: 300px;
+  padding-bottom: 20px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 15px 15px 5px;
+}
+
+.brand-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 15px 10px;
+}
+
+.brand-card a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.brand-card a:hover {
+  color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .brands-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+/* Click-triggered animation keyframes */
+@keyframes clickBounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Class that triggers the animation */
+.animate-on-click {
+  animation: clickBounce 0.3s ease;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-block">
+        <span class="logo-text">Bliss Stays</span>
+      </div>
+      <div class="spacer"></div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#locations">Locations <span>&#9662;</span></a></li>
+          <li class="has-dropdown">
+            <a href="#">Menu <span>&#9662;</span></a>
+            <ul class="dropdown">
+              <li><a href="faq.html">FAQs</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="book-now">
+        <a href="#book">Book now</a>
+      </div>
+    </div>
+  </header>
+  
+  
+  
+
+  <style>
+    /* Header */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background-color: #f4f0e0;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+    }
+  
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+    }
+  
+    .logo-block {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+  
+    .spacer {
+      flex-grow: 1;
+    }
+  
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .main-nav a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 3px;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+  
+    .main-nav a:hover {
+      color: var(--accent);
+    }
+  
+    .main-nav a:hover::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary);
+    }
+  
+    .main-nav span {
+      font-size: 10px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+  
+    .book-now {
+      margin-right: 40px;
+      margin-left: 20px;
+    }
+  
+    .book-now a {
+      background-color: var(--primary);
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 10px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  
+    .book-now a:hover {
+      background-color: #363626;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+  
+    /* Dropdown */
+    .main-nav .has-dropdown {
+      position: relative;
+    }
+  
+    .main-nav .dropdown {
+      display: none;
+      position: absolute;
+      background-color: var(--light);
+      top: 100%;
+      left: 0;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      min-width: 140px;
+      z-index: 1001;
+    }
+  
+    .main-nav .has-dropdown:hover .dropdown {
+      display: block;
+    }
+  
+    .main-nav .dropdown li a {
+      display: block;
+      padding: 10px 16px;
+      color: var(--primary);
+      font-size: 14px;
+      text-decoration: none;
+    }
+  
+    .main-nav .dropdown li a:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const dropdown = document.querySelector('.dropdown');
+
+    menuToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.has-dropdown')) {
+        dropdown.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<section id="faq" style="background-color:#f4f0e6; padding: 80px 20px;">
+    <div style="max-width: 900px; margin: auto;">
+      <img src="banner.png" alt="FAQ Banner" style="width:100%; max-height:400px; object-fit:cover; border-radius:8px; margin-bottom: 40px;" />
+      <h5 style="text-transform: uppercase; color: #6b6b50; font-size: 0.9rem; letter-spacing: 1px;">Got a question?</h5>
+      <h2 style="color: #4b4b38; font-size: 2.4rem; margin: 10px 0 40px;">Bliss Stays Frequently Asked Questions</h2>
+  
+      <!-- FAQ Items -->
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">What are your check-in and check-out times?</summary><p style="margin-top: 10px; color: #444;">Check-in is from 15:00 onwards, and check-out is by 11:00. Early check-in or late check-out is available for £15 per hour, subject to availability. Please contact us in advance to arrange.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">How does the check-in process work?</summary><p style="margin-top: 10px; color: #444;">Check-in is usually self-service via a lockbox or smart lock. You'll receive all access details and instructions before your arrival via WhatsApp.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Can I cancel or change my booking after it's made?</summary><p style="margin-top: 10px; color: #444;">Yes, cancellation and change policies vary depending on your booking type. Please refer to your confirmation email or contact us for details.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Do I need to provide ID or anything else to check in?</summary><p style="margin-top: 10px; color: #444;">Yes, a valid ID with address proof is required at check-in. We may also ask for your booking confirmation to verify your reservation.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Can I make a group booking or book multiple apartments?</summary><p style="margin-top: 10px; color: #444;">Absolutely! Group bookings are welcome and subject to availability. Please contact us directly for assistance with larger bookings.</p></details>
+      </div>
+  
+      <!-- Your Stay -->
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Do you offer housekeeping during my stay?</summary><p style="margin-top: 10px; color: #444;">Housekeeping services vary by length of stay and property. Additional cleaning can often be arranged upon request for an extra fee.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Are linens, towels, and toiletries provided?</summary><p style="margin-top: 10px; color: #444;">Yes, we provide fresh linens, towels, and basic toiletries for your stay. If you need extras, please let us know in advance, requests made after arrival may incur an additional charge.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Is there a kitchen or kitchenette in the apartment?</summary><p style="margin-top: 10px; color: #444;">All of our apartments come with a fully equipped kitchen or kitchenette. You’ll find essentials like a stove, fridge, and basic utensils.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Is smoking allowed in the apartment or building?</summary><p style="margin-top: 10px; color: #444;">All our apartments are strictly non-smoking. Smoking is only permitted in designated outdoor areas, if available.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Are pets allowed in the apartment?</summary><p style="margin-top: 10px; color: #444;">Pets are not allowed unless explicitly mentioned in the listing. Please check with us before booking if you plan to bring a pet.</p></details>
+      </div>
+  
+      <!-- Facilities & Amenities -->
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Is WiFi included, and how fast is it?</summary><p style="margin-top: 10px; color: #444;">Yes, complimentary WiFi is available at all properties. Speed and reliability may vary by location.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Is the apartment heated or air-conditioned?</summary><p style="margin-top: 10px; color: #444;">All our apartments come with heating for year-round comfort. Air conditioning units are not standard but can be provided during summer for an additional charge. Please let us know in advance if required.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Do you offer parking on-site or nearby?</summary><p style="margin-top: 10px; color: #444;">Parking options vary by location. Some apartments offer on-site parking or nearby public parking. Please contact us for details.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Is there lift access in the building?</summary><p style="margin-top: 10px; color: #444;">Our properties do not have lifts, which is common in many UK buildings. Please keep this in mind, especially if mobility is a concern.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Are there laundry facilities available?</summary><p style="margin-top: 10px; color: #444;">Yes, all our apartments have laundry facilities, with a washer and dryer available for your convenience during your stay.</p></details>
+      </div>
+  
+      <!-- Location & Local Info -->
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Where are your apartments located?</summary><p style="margin-top: 10px; color: #444;">Our apartments are in central, well-connected locations across the city. Each listing includes detailed location information and nearby landmarks.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">What’s the best way to get to the apartment from the airport or station?</summary><p style="margin-top: 10px; color: #444;">You can reach the apartment by taxi, Uber, or public transport such as trains or buses. We’re happy to provide detailed directions and travel tips based on your arrival point if requested.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Are there restaurants, cafes, or supermarkets nearby?</summary><p style="margin-top: 10px; color: #444;">Yes, our apartments are in well-connected areas with restaurants, cafes, and supermarkets nearby. Options may vary, but essentials are usually within walking distance.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Is the neighbourhood safe?</summary><p style="margin-top: 10px; color: #444;">Yes, our apartments are located in family-friendly neighbourhoods that are generally safe. However, as with any city, we recommend being mindful of your belongings.</p></details>
+      </div>
+  
+      <div style="border-top: 1px solid #aaa; padding: 20px 0; border-bottom: 1px solid #aaa;">
+        <details><summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #4b4b38;">Can I store luggage before check-in or after check-out?</summary><p style="margin-top: 10px; color: #444;">Yes, luggage drop-off is available for £25, subject to availability. This service is usually accommodated between 11:00 AM and 3:00 PM. Please contact us in advance to arrange.</p></details>
+      </div>
+  
+    </div>
+  </section>
+  
+  
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- LEFT SIDE: All links grouped -->
+      <div class="footer-links-group">
+        <div class="footer-column">
+          <h4>BLISS STAYS</h4>
+          <ul>
+            <li><a href="#">Locations</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Bliss Ventures</a></li>
+          </ul>
+        </div>
+  
+        <div class="footer-column">
+          <h4>OUR BRANDS</h4>
+          <ul>
+            <li><a href="#">Serviced Apartments</a></li>
+            <li><a href="#">Studios</a></li>
+            <li><a href="#">Apart-hotels</a></li>
+          </ul>
+  
+          <h4 class="footer-sub">ENQUIRIES</h4>
+          <ul>
+            <li><a href="#">Corporate Bookings</a></li>
+            <li><a href="#">Group Bookings</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- RIGHT SIDE: Logo and socials -->
+      <div class="footer-logo-section">
+        <img src="logo.png" alt="Bliss Stays Logo" class="footer-logo" />
+        <div class="social-icons">
+          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
+          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; Bliss Stays Ltd. 2025. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <style>
+  .footer {
+  background-color: #f4f0e0;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 6px;
+  color: #333;
+}
+
+.footer-column .footer-sub {
+  margin-top: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin: 10px 0;
+}
+
+.footer-column a {
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #666;
+}
+
+.footer-logo-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo {
+  width: 270px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-section .social-icons a {
+  margin-left: 12px;
+}
+
+.footer-logo-section .social-icons img {
+  width: 22px;
+  filter: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid #999;
+  padding-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links-group {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-logo-section {
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 30px;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+}
+
+  </style> 
+
+</body>
+</html>
