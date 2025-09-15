@@ -67,7 +67,7 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.593);
+      background: rgba(0, 0, 0, 0.255);
       z-index: 1;
     }
 
@@ -422,8 +422,7 @@
   mo.observe(document.documentElement, { childList: true, subtree: true });
 })();
 </script>
-<!-- ===== /Site-wide Scroll Transitions ===== -->
-
+  
   <!-- Header -->
   <header>
     <div class="header-inner">
@@ -515,7 +514,10 @@
   color: var(--primary, #363633);
   margin: 2px 0 8px;
   padding-bottom: 2px;
-  border-bottom: 3px dotted #2d6671;  /* like your mock */
+  border-bottom: 3px  #363633; 
+  border-bottom-style: solid;
+  padding-bottom: 5px;
+  margin-bottom: 10px; /* like your mock */
 }
 
 /* vertical, bulleted list */
@@ -837,7 +839,7 @@
 
 .wa-text{min-width:0} /* prevent squish */
 .wa-title{font-size:18px;font-weight:800;color:#111827;margin:0 22px 6px 0;line-height:1.25}
-.wa-cta{display:inline-block;color:#2563eb;text-decoration:none;font-size:15px;line-height:1.3}
+.wa-cta{display:inline-block;color:#3e3a35;;text-decoration:none;font-size:15px;line-height:1.3}
 .wa-cta:hover{text-decoration:underline}
 .wa-wave{display:inline-block;animation:wa-wave 1.6s ease-in-out infinite;transform-origin:70% 70%}
 
@@ -1792,29 +1794,6 @@ $(function(){
   }
 </style>
 
-<script>
-  // init / re-init just this slider
-  $(function(){
-    const $car = $('.bliss-slider');
-    if(!$car.length) return;
-    try{ $car.trigger('destroy.owl.carousel'); }catch(e){}
-
-    $car.owlCarousel({
-      items: 3,
-      margin: 28,
-      loop: true,
-      nav: true,
-      dots: false,
-      smartSpeed: 550,
-      navText: ['<span>‹</span>','<span>›</span>'],
-      responsive:{
-        0:{items:1, margin:14},
-        700:{items:2, margin:20},
-        1024:{items:3, margin:28}
-      }
-    });
-  });
-</script>
 
 
 
@@ -1870,38 +1849,42 @@ $(function(){
   }
 
   .properties-slider .caption .pin-icon {
-  width: 24px;   /* bigger size */
-  height: 24px;
+  width: 50px;   /* bigger size */
+  height: 50px;
   object-fit: contain;
 }
 
 </style>
 
 <script>
-  // SINGLE initializer (remove any duplicates below this)
-  $(function () {
-    const $car = $('.attractions-carousel');
+  $(function(){
+    const $car = $('.properties-slider');
     if(!$car.length) return;
-    try { $car.trigger('destroy.owl.carousel'); } catch(e) {}
+    try{ $car.trigger('destroy.owl.carousel'); }catch(e){}
 
     $car.owlCarousel({
-      items: 3,
-      margin: 28,
+      items: 4,                  // 👈 max 3 visible
+      margin: 24,
       loop: true,
+      rewind: false,             // 👈 stay in loop mode
+      autoplay: true,
+      autoplayTimeout: 3000,
+      autoplayHoverPause: true,
+      smartSpeed: 600,
       nav: true,
       dots: false,
-      lazyLoad: true,
-      smartSpeed: 550,
-      stagePadding: 0,
-      navText: ['‹','›'],                 // visible because we DON'T hide spans
-      responsive: {
-        0:    { items: 1, margin: 14 },
-        640:  { items: 2, margin: 20 },
-        1024: { items: 3, margin: 28 }
+      navText: ['<span>&lsaquo;</span>','<span>&rsaquo;</span>'],
+      responsive:{
+        0:{items:1},
+        600:{items:2},
+        1000:{items:4}
       }
     });
   });
 </script>
+
+
+  
 <!-- Properties End -->
 
 <!-- Properties End -->
@@ -2071,7 +2054,8 @@ body {
 
 <!-- ===== Reviews Section (drop-in) ===== -->
 <!-- ================== Reviews (Wide Banner + Slider) ================== --> 
-<!-- ================== Reviews (Wide Banner + Slider) ================== -->
+<!-- ===== Reviews Section (drop-in) ===== -->
+<!-- ================== Reviews (Wide Banner + Slider) ================== --> 
 <section id="reviews-banner" aria-label="Guest reviews">
   <style>
     html, body { margin: 0; }
@@ -2111,13 +2095,19 @@ body {
       align-items:center;gap:18px;min-height:170px;
       border-radius:14px;padding:24px;background:transparent;
     }
-    .rb-quote{font-size:22px;line-height:1.5;font-style:italic;color:#4b5563;margin:0;letter-spacing:.25px;}
+    .rb-quote{font-size:16px;line-height:1.5;font-style:italic;color:#4b5563;margin:0;letter-spacing:.25px;}
     .rb-center{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;}
     .rb-name{font-weight:800;font-size:18px;color:#2a2f23;}
-    .rb-date{color:#6b7280;font-size:15px;}
+    .rb-date{color:#6b7280;font-size:16px;}
     .rb-flag img{width:150px;height:auto;display:block;}
-    .rb-src{position:absolute;right:16px;bottom:12px;}
-    .rb-src img{width:120px;height:auto;display:block;opacity:0.85;} /* smaller logo */
+
+    /* Booking.com logo */
+    .rb-src{
+      position:absolute;
+      right:16px;
+      bottom:40px;   /* moved upwards (was 12px) */
+    }
+    .rb-src img{width:120px;height:auto;display:block;opacity:0.85;}
 
     /* Arrows */
     #reviews-banner .arrow{
@@ -2255,10 +2245,8 @@ body {
     })();
   </script>
 </section>
-
-
-
 <!-- ================== /Reviews ================== -->
+
 
 <!-- ====================== FAQ (Accordion + Animations) ====================== -->
 <section id="faq" aria-labelledby="faq-title" class="faq-wrap">
@@ -2360,7 +2348,12 @@ body {
     .faq-icon svg{ width:18px; height:18px; stroke: currentColor; stroke-width: 2.6; fill:none; transition: transform .25s ease; }
     .faq-item[open] .faq-icon svg{ transform: rotate(180deg); } /* chevron flip */
 
-    .faq-question{ flex:1; font-size: 17px; line-height: 1.35; }
+    .faq-question {
+  flex: 1;
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: normal; /* 👈 makes the questions unbold */
+}
 
     /* answer (smooth height) */
     .faq-a{
@@ -2385,9 +2378,9 @@ body {
       text-align:center; margin-top: 20px; color:#475569; font-size: 14px;
     }
     .faq-help a{
-      color:#2563eb; text-decoration:none; font-weight:700; border-bottom:1px dashed rgba(37,99,235,.45);
+      color:#3e3a35;; text-decoration:none; font-weight:700; border-bottom:1px dashed rgba(3, 3, 3, 0.45);
     }
-    .faq-help a:hover{ border-bottom-color:#2563eb; }
+    .faq-help a:hover{ border-bottom-color:#3e3a35; }
   </style>
 
   <div class="faq-inner">
